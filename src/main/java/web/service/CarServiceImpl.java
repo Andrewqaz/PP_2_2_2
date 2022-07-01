@@ -21,29 +21,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getCars(Integer count) {
-        List<Car> resultList = new ArrayList<>();
         if (count == null || count >= 5) {
-            resultList.addAll(cars);
+            return cars;
         } else {
-            switch (count) {
-                case 1: {
-                    resultList.add(cars.get(0));
-                    break;
-                }
-                case 2: {
-                    resultList.addAll(cars.subList(0, 2));
-                    break;
-                }
-                case 3: {
-                    resultList.addAll(cars.subList(0, 3));
-                    break;
-                }
-                case 4: {
-                    resultList.addAll(cars.subList(0, 4));
-                    break;
-                }
-            }
+            return cars.subList(0, count);
         }
-        return resultList;
     }
 }
